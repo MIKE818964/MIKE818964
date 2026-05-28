@@ -19,6 +19,10 @@ We build the polished one-click installers that close them.
 
 ### J1 Bridge — Snapmaker J1 + OrcaSlicer, finally talking to each other
 
+![J1 Bridge Monitor tab — live print at 90°C bed, 260°C left hotend, right hotend idle](monitor_proof.webp)
+
+*↑ Real Monitor tab during a real print. Bed climbing 90→100°C, left nozzle locked at 260°C, right nozzle idle at ambient. Live polling, stock V2.8.0 firmware, no Klipper conversion. **Has held continuously for multiple days.***
+
 The Snapmaker J1 is a great dual-extruder printer hobbled by a flaky stock workflow:
 - Snapmaker Luban is bloated, slow, and the slicer is mediocre
 - OrcaSlicer is excellent — but uploading to a J1 means Reddit hacks and broken start macros
