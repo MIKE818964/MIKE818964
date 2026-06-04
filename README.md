@@ -7,9 +7,11 @@
 3D printers, machinery, dashboards — they all ship with workflow gaps.
 We build the polished one-click installers that close them.
 
+### 🦡 **[honeybadger.software](https://honeybadger.software/)** — main site, products, downloads, news
+
+[![Site](https://img.shields.io/badge/honeybadger.software-LIVE-7BC4E0?style=for-the-badge)](https://honeybadger.software/)
 [![Status](https://img.shields.io/badge/status-active_beta-7BC4E0?style=for-the-badge)](#)
 [![Stack](https://img.shields.io/badge/built_with-Python_%2B_NiceGUI_%2B_PyInstaller-5DA8C7?style=for-the-badge)](#)
-[![License](https://img.shields.io/badge/license-MIT_(planned)-C9A961?style=for-the-badge)](#)
 
 </div>
 
@@ -40,7 +42,7 @@ The Snapmaker J1 is a great dual-extruder printer hobbled by a flaky stock workf
 
 **The technical achievement nobody else has shipped:** live monitoring during prints on **stock V2.8.0 firmware**. The J1's SACP protocol only allows one client at a time — every other PC dashboard project gives up at this wall or forces you to gut the firmware. J1 Bridge ships a bundled Go sidecar that holds the slot cleanly and tears down without orphaning when the app closes (Windows Job Object kill-on-close). The only known trade-off: while monitoring is active, the printer's own touchscreen is locked. A "Release LCD" toggle is coming in v0.2.
 
-*Public release is planned alongside the Patreon launch — both arriving soon. ⭐ this profile to get notified.*
+*Public release is planned alongside the Patreon launch — both arriving soon. Full product page: [honeybadger.software/j1-bridge](https://honeybadger.software/j1-bridge.html). ⭐ this profile to get notified.*
 
 ---
 
@@ -49,7 +51,9 @@ The Snapmaker J1 is a great dual-extruder printer hobbled by a flaky stock workf
 ### C7 Corvette CAN bus dashboard
 A real touchscreen dashboard for 2014-2019 C7 Corvettes — Pi 4 + PiCAN2 reading the **raw CAN bus** (not OBD-II PIDs, the real stream the car talks to itself with). 10-15" landscape display on a swing-arm mount off the passenger grab bar. PySide6 + QML for the UI. Aimed at being the first commercial-quality dashboard kit for the C7 community.
 
-*Hardware prototype in progress. Will be open-source firmware + optional turnkey kit.*
+Also live: an in-browser **[Dash Builder](https://honeybadger.software/gauge-builder.html)** so anyone can design a custom digital gauge cluster + a **Nitrous Control** module with seven-gate safety interlocks.
+
+*Hardware prototype in progress. Will be open-source firmware + optional turnkey kit. Product pages at [honeybadger.software/c7-dashboard](https://honeybadger.software/c7-dashboard.html) and [honeybadger.software/nitrous](https://honeybadger.software/nitrous.html).*
 
 ### Maguire blender plant monitoring (industrial)
 In-house manufacturing tooling scaling from 1 to 150 blenders. Polished operator dashboards, OPC UA / MQTT / Modbus everywhere, per-shift costing and reports. Not a consumer product, but the foundation pattern (NiceGUI + InfluxDB + Grafana + auto-installer) feeds back into everything else.
@@ -78,7 +82,6 @@ Small studio. One developer. Real products.
 
 **Built honest. Shipped polished. Maintained free.**
 
-<sub>Patreon launching with J1 Bridge v0.1.0 — donations link coming soon.<br>
-For now, a ⭐ on this profile is the best support.</sub>
+<sub>Browse everything at [honeybadger.software](https://honeybadger.software/) · Patreon launching with J1 Bridge v0.1.0 · Until then, a ⭐ goes a long way.</sub>
 
 </div>
