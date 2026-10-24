@@ -63,7 +63,9 @@ C# plugins on Carbon, using the Oxide and Carbon plugin APIs. Listed in the Rust
 
 A personal damage meter with a battle scene behind the numbers. Total damage, biggest hit and DPS. Hits float up over the scene, and a banner marks a new personal best.
 
-<a href="https://www.curseforge.com/wow/addons/battle-aura"><img src="assets/battle-aura-in-game.jpg" width="100%" alt="Battle Aura in a real fight in WoW Forever: the battle scene frame top left with YOUR DAMAGE, hit numbers floating over the target"></a>
+<a href="https://www.curseforge.com/wow/addons/battle-aura"><img src="assets/battle-aura-test-preview.gif" width="100%" alt="Battle Aura test preview: hit numbers rise off the sword, two orange crits, the combo counter climbs to 14, NEW BEST HIT banner, red hurt flash at the finish"></a>
+
+<sub>The addon's built-in `/ba test` preview, drawn by running its own Lua over a real fight capture. &nbsp;<a href="assets/battle-aura-in-game.jpg">The still from that fight</a></sub>
 
 Lua addon on Blizzard's own damage meter API (C_DamageMeter), so it works with Forever's restricted combat data. &nbsp;[CurseForge](https://www.curseforge.com/wow/addons/battle-aura) &nbsp;[WoWInterface](https://www.wowinterface.com/downloads/info27234-BattleAura.html) &nbsp;[Source](https://github.com/honeybadger-software/battle-aura)
 
