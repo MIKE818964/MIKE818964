@@ -1,0 +1,40 @@
+# Refreshes the telemetry panel on the profile README once a day.
+# Reads public Sui testnet GraphQL only (no secrets), rebuilds the two SVGs, and commits them only when they changed.
+name: telemetry
+
+on:
+  schedule:
+    - cron: "17 6 * * *"   # 06:17 UTC every day
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: telemetry
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Read the chain (writes data/telemetry.json, exits non-zero if nothing could be read)
+        run: node scripts/telemetry.mjs
+
+      - name: Render the panel (assets/telemetry-dark.svg, assets/telemetry-light.svg)
+        run: node scripts/render_telemetry.mjs
+
+      - name: Commit if anything changed
+        run: |
+          git add data/telemetry.json assets/telemetry-dark.svg assets/telemetry-light.svg
+          git diff --cached --quiet && { echo "No change."; exit 0; }
+          git -c user.name="Honey Badger" -c user.email="noreply@honeybadger.software" \
+            commit -m "telemetry: $(date -u +%Y-%m-%d)"
+          git push

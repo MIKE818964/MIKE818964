@@ -17,10 +17,10 @@ I'm Honey Badger. I've been writing code since 1996. These days I build mods, se
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/telemetry-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/telemetry-light.svg">
-  <img alt="War Room engine check from 24 Oct 2026: 2,780 Cycle 7 killmails held, 1,261 gate jumps in the last 24 hours by chain time." src="assets/telemetry-dark.svg" width="100%">
+  <img alt="Daily chain readout for EVE Frontier Stillness: killmails, gate jumps and new structures in the last 24 hours, plus Dapp Index listings. The panel shows when it was generated." src="assets/telemetry-dark.svg" width="100%">
 </picture>
 
-<sub>Numbers from one run of the War Room engine's own check tool on 24 Oct 2026. A snapshot, not a live feed.</sub>
+<sub>Rebuilt once a day by a GitHub Action from public Sui testnet reads: <a href="scripts/telemetry.mjs">scripts/telemetry.mjs</a>, <a href=".github/workflows/telemetry.yml">the workflow</a>. Daily counts, not a live feed. A number that could not be read shows NOT READ.</sub>
 
 ### THE ARMORY
 
