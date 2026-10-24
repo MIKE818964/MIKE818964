@@ -4,7 +4,7 @@
   <img alt="Honey Badger. Game mods, servers and tools." src="assets/hero-dark.svg" width="100%">
 </picture>
 
-I'm Honey Badger. I've been writing code since 1996. These days I build mods, servers and tools for the games I play, on my own. The screenshots below come straight from the projects.
+I'm Honey Badger. I've been writing code since 1996. These days I build mods, servers and tools for the games I play, on my own.
 
 <a href="https://honeybadger.software/frontier/warroom/"><img src="assets/warroom-map.jpg" width="100%" alt="The War Room for EVE Frontier: kill map in the middle, live feed on the left, top hunter's dossier on the right. Click to open it."></a>
 
@@ -57,7 +57,7 @@ My own Rust server, running Carbon. The HUD across the top of these frames is mi
 
 <sub>Build: places whole structures from saved layouts. &nbsp; Map Forge: edits terrain layers and saves a new .map. &nbsp; DPS HUD: damage, headshots, last hit, target, accuracy. &nbsp; TDM: two-team deathmatch.</sub>
 
-C# plugins on Carbon, using the Oxide and Carbon plugin APIs. Listed in the Rust server browser under Modded. &nbsp;Source is private.
+C# plugins on Carbon, using the Oxide and Carbon plugin APIs. Listed in the Rust server browser under Modded, or from the F1 console: `client.connect 216.39.241.155:27915` &nbsp;Source is private.
 
 #### Battle Aura &nbsp;<sub>WoW Forever</sub>
 
