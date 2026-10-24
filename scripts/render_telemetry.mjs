@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 // Builds assets/telemetry-dark.svg and assets/telemetry-light.svg from data/telemetry.json (written by telemetry.mjs).
-// The only motion is the lines typing out, a pause, then a repeat. Viewers that block animation or ask for reduced
-// motion get the finished text. A null number prints NOT READ; nothing is ever filled in from an older run.
+// Every label, the command line and the GENERATED stamp are on screen from the first frame. The only motion is the
+// numbers typing in (the first one starts at 0.1 s), a long pause, then a repeat, plus a blinking cursor. Viewers that
+// block animation or ask for reduced motion get the finished panel. A null number prints NOT READ; nothing is ever
+// filled in from an older run.
 import { readFileSync, writeFileSync } from "node:fs";
 
 const at = (p) => new URL(`../${p}`, import.meta.url);
@@ -44,44 +46,46 @@ const cut = (s, sep) => { const i = s.indexOf(sep); return [s.slice(0, i), s.sli
 function svg(mode) {
   const dark = mode === "dark";
   const bg = dark ? "#0B0C0F" : PAPER, fg = dark ? BONE : INK, dim = dark ? "#8A8F98" : "#5B6270", acc = dark ? AMBER : "#9A5A12";
-  const H = 40 + LH * (LINES.length + 1) + 18, T = 18.0;  // T = one typing cycle, seconds
+  const H = 40 + LH * (LINES.length + 1) + 18, T = 18.0;  // T = one cycle, seconds
   const css = [], body = [];
-  let t = 0.6;
+  let t = 0.1;  // the first number starts typing 0.1 s after the image loads
   LINES.forEach(([txt, role], i) => {
     const y = 40 + LH * i + FS;
     if (role === "gap" || !txt) return;
-    const n = txt.length, w = n * CW + 4;
-    const dur = role !== "val" ? Math.max(0.25, n * 0.008) : Math.max(0.3, n * 0.0105);
-    const a = (t / T) * 100, b = ((t + dur) / T) * 100;
-    // The cover rect rests to the RIGHT of the text (text visible). The animation pulls it over the text and lets it
-    // slide off one character per step, so with animation off the text simply shows.
-    css.push(`@keyframes k${i}{0%,${a.toFixed(2)}%{transform:translateX(-${w.toFixed(0)}px)}${b.toFixed(2)}%,97%{transform:translateX(0)}100%{transform:translateX(-${w.toFixed(0)}px)}}` +
-      `.c${i}{animation:k${i} ${T}s steps(${n},end) infinite}`);
     const color = { cmd: acc, dim, val: fg }[role];
-    let tsp = esc(txt);
-    if (role === "val") {  // label bright, dot leaders dim, value in the accent, any note dim
-      const [label, rest] = cut(txt, " .");
-      const [dotsPart, after] = cut(rest, ". ");
-      const [value, note] = after.includes("   ") ? cut(after, "   ") : [after, null];
-      tsp = `${esc(label)}<tspan fill="${dim}"> .${dotsPart}. </tspan><tspan fill="${acc}">${esc(value)}</tspan>` +
-        (note === null ? "" : `<tspan fill="${dim}">   ${esc(note)}</tspan>`);
+    if (role !== "val") {  // command, source and stamp lines: static, always visible
+      body.push(`<text x="${X0}" y="${y}" fill="${color}">${esc(txt)}</text>`);
+      return;
     }
+    // label bright, dot leaders dim, value in the accent, any note dim
+    const [label, rest] = cut(txt, " .");
+    const [dotsPart, after] = cut(rest, ". ");
+    const [value, note] = after.includes("   ") ? cut(after, "   ") : [after, null];
+    const tsp = `${esc(label)}<tspan fill="${dim}"> .${dotsPart}. </tspan><tspan fill="${acc}">${esc(value)}</tspan>` +
+      (note === null ? "" : `<tspan fill="${dim}">   ${esc(note)}</tspan>`);
+    // Only the value (and its note) types in. The cover rect rests just RIGHT of the line (value visible); the
+    // animation pulls it over the value and lets it slide off one character per step. Labels never get covered, and
+    // with animation off nothing is covered at all.
+    const n = txt.length, vStart = n - after.length, vChars = after.length;
+    const w = vChars * CW + 4, dur = Math.max(0.2, vChars * 0.02);
+    const a = (t / T) * 100, b = ((t + dur) / T) * 100;
+    css.push(`@keyframes k${i}{0%,${a.toFixed(2)}%{transform:translateX(-${w.toFixed(0)}px)}${b.toFixed(2)}%,99%{transform:translateX(0)}100%{transform:translateX(-${w.toFixed(0)}px)}}` +
+      `.c${i}{animation:k${i} ${T}s steps(${vChars},end) infinite}`);
     body.push(`<text x="${X0}" y="${y}" fill="${color}">${tsp}</text>` +
-      `<rect class="c${i}" x="${(X0 - 2 + w).toFixed(0)}" y="${y - FS}" width="${(w + 4).toFixed(0)}" height="${LH}" fill="${bg}"/>`);
-    t += dur + (role === "cmd" ? 0.4 : 0.12);
+      `<rect class="c${i}" x="${(X0 + vStart * CW - 2 + w).toFixed(0)}" y="${y - FS}" width="${(w + 4).toFixed(0)}" height="${LH}" fill="${bg}"/>`);
+    t += dur + 0.15;
   });
-  const yc = 40 + LH * LINES.length + FS, a = (t / T) * 100;
-  css.push(`@keyframes cur{0%,${a.toFixed(2)}%{opacity:0}${(a + 0.01).toFixed(2)}%,100%{opacity:1}}.cur{animation:cur ${T}s step-end infinite}` +
-    `@keyframes blink{50%{opacity:0}}.blink{animation:blink 1.1s step-end infinite}`);
-  body.push(`<g class="cur"><text x="${X0}" y="${yc}" fill="${acc}">$</text>` +
-    `<rect class="blink" x="${(X0 + 2 * CW).toFixed(0)}" y="${yc - FS + 3}" width="${CW.toFixed(0)}" height="${FS + 2}" fill="${fg}"/></g>`);
+  const yc = 40 + LH * LINES.length + FS;
+  css.push(`@keyframes blink{50%{opacity:0}}.blink{animation:blink 1.1s step-end infinite}`);
+  body.push(`<text x="${X0}" y="${yc}" fill="${acc}">$</text>` +
+    `<rect class="blink" x="${(X0 + 2 * CW).toFixed(0)}" y="${yc - FS + 3}" width="${CW.toFixed(0)}" height="${FS + 2}" fill="${fg}"/>`);
   const label = `Daily chain readout generated ${stamp} UTC: ${num(D.killmails_24h)} killmails, ${num(D.gate_jumps_24h)} gate jumps and ${num(D.structure_events_24h)} new structures on EVE Frontier Stillness in the last 24 hours; ${num(D.dapp_index_listings_total)} Dapp Index listings.`;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(label)}">
 <style>
 @font-face { font-family: "HB Mono"; src: url(data:font/woff2;base64,${FONT}) format("woff2"); font-weight: 500; }
 text { font-family: "HB Mono", "IBM Plex Mono", Consolas, monospace; font-size: ${FS}px; font-weight: 500; white-space: pre; }
 ${css.join("")}
-@media (prefers-reduced-motion: reduce) { rect, g { animation: none !important; } }
+@media (prefers-reduced-motion: reduce) { rect { animation: none !important; } }
 </style>
 <rect width="${W}" height="${H}" fill="${bg}"/>
 ${body.join("")}
