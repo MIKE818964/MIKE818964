@@ -1,87 +1,93 @@
-<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg">
+  <img alt="Honey Badger. Game mods, servers and tools." src="assets/hero-dark.svg" width="100%">
+</picture>
 
-# HONEYBADGER SOFTWARE INC
+I'm Honey Badger. I've been writing code since 1996. These days I build mods, servers and tools for the games I play, on my own. The screenshots below come straight from the projects.
 
-### Small Windows tools that fix what the big vendors won't.
+### COMM-LINK
 
-3D printers, machinery, dashboards — they all ship with workflow gaps.
-We build the polished one-click installers that close them.
+**24 Oct 2026.** The War Room and the Bounty Board are registered on the EVE Frontier Dapp Index.<br>
+**22 Oct 2026.** Shipped the War Room depth release for Cycle 7 on Stillness.<br>
+**10 Oct 2026.** Named the Rust server Honey Badger and put my first plugin on it.<br>
+**2 Oct 2026.** Battle Aura 3.1.1 for WoW Forever uploaded to CurseForge. WoWInterface has it too.<br>
+**29 Sep 2026.** Republished the Bounty Board contract for Cycle 7.
 
-### 🦡 **[honeybadger.software](https://honeybadger.software/)** — main site, products, downloads, news
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/telemetry-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/telemetry-light.svg">
+  <img alt="War Room engine check from 24 Oct 2026: 2,780 Cycle 7 killmails held, 1,261 gate jumps in the last 24 hours by chain time." src="assets/telemetry-dark.svg" width="100%">
+</picture>
 
-[![Site](https://img.shields.io/badge/honeybadger.software-LIVE-7BC4E0?style=for-the-badge)](https://honeybadger.software/)
-[![Status](https://img.shields.io/badge/status-active_beta-7BC4E0?style=for-the-badge)](#)
-[![Stack](https://img.shields.io/badge/built_with-Python_%2B_NiceGUI_%2B_PyInstaller-5DA8C7?style=for-the-badge)](#)
+<sub>Numbers from one run of the War Room engine's own check tool on 24 Oct 2026. A snapshot, not a live feed.</sub>
 
-</div>
+### THE ARMORY
 
----
+#### War Room &nbsp;<sub>EVE Frontier</sub>
 
-## 🚧 In active beta — public release coming soon
+PvP intel built from public chain events. It shows kills and killers, and how late each killmail reached the chain, which is often hours. The chain doesn't show who is online, and neither does the War Room.
 
-### J1 Bridge — Snapmaker J1 + OrcaSlicer, finally talking to each other
+<a href="https://honeybadger.software/frontier/warroom/"><img src="assets/warroom-map.jpg" width="100%" alt="War Room map: kill markers, live feed on the left, top hunter's dossier on the right"></a>
+<a href="https://honeybadger.software/frontier/warroom/"><img src="assets/warroom-kills.jpg" width="33.3%" alt="Kill board"></a><a href="https://honeybadger.software/frontier/warroom/"><img src="assets/warroom-dossier.jpg" width="33.3%" alt="Pilot dossier"></a><a href="https://honeybadger.software/frontier/warroom/"><img src="assets/warroom-history.jpg" width="33.3%" alt="Chain Chronicle history"></a>
 
-![J1 Bridge Monitor tab — live print at 90°C bed, 260°C left hotend, right hotend idle](monitor_proof.webp)
+<sub>Kills: top hunters, streaks, late arrivals. &nbsp; Dossier: kills, losses, same-wallet characters, last signed action. &nbsp; History: the last 24 hours, split into parts of the day.</sub>
 
-*↑ Real Monitor tab during a real print. Bed climbing 90→100°C, left nozzle locked at 260°C, right nozzle idle at ambient. Live polling, stock V2.8.0 firmware, no Klipper conversion. **Has held continuously for multiple days.***
+#### Bounty Board &nbsp;<sub>EVE Frontier</sub>
 
-The Snapmaker J1 is a great dual-extruder printer hobbled by a flaky stock workflow:
-- Snapmaker Luban is bloated, slow, and the slicer is mediocre
-- OrcaSlicer is excellent — but uploading to a J1 means Reddit hacks and broken start macros
-- Want to monitor a print from your desk? Stock firmware says no. Everyone else says "convert to Klipper" (warranty void, soldering required, scary)
+Post a bounty on any pilot. If the target loses a ship before it runs out, the contract lets the killer claim it, with the game's own killmail as proof. No platform fee, just network gas. Nobody has collected one yet, so that last step is still untested. "Earned" on the board means a kill qualified, not that it was paid.
 
-**J1 Bridge collapses all of that into one drag-and-drop window:**
+<a href="https://honeybadger.software/frontier/bounty/"><img src="assets/bounty-board.jpg" width="100%" alt="Honey Badger Bounty Board: wanted list on the left, post-a-bounty panel on the right"></a>
 
-| What you do now | What J1 Bridge does |
-|---|---|
-| Install 350 MB of Snapmaker Luban, fight the slicer, export gcode, manually upload | Drop the STL on the Home tab. It slices, patches the broken start macro, uploads, prints. |
-| Walk to the printer to check temps and progress | Live Monitor tab — bed + both nozzles + ETA + pause/resume/cancel from your desk |
-| Buy an OctoPi rig and flash an SD card to add a webcam | Plug a USB webcam in, pick it from the dropdown |
-| Convert to Klipper to get any real dashboard (voids warranty, 3-hour install) | One-click installer. No Klipper. No Pi. No soldering. Warranty intact. |
-| Pretend the firmware doesn't have bugs | Bundled Known Issues page lists every limit honestly. No surprises. |
+#### Honey Badger &nbsp;<sub>Rust server</sub>
 
-**The technical achievement nobody else has shipped:** live monitoring during prints on **stock V2.8.0 firmware**. The J1's SACP protocol only allows one client at a time — every other PC dashboard project gives up at this wall or forces you to gut the firmware. J1 Bridge ships a bundled Go sidecar that holds the slot cleanly and tears down without orphaning when the app closes (Windows Job Object kill-on-close). The only known trade-off: while monitoring is active, the printer's own touchscreen is locked. A "Release LCD" toggle is coming in v0.2.
+My own Rust server, running Carbon. The HUD across the top of these frames is mine. The gate and the vault were placed by my build plugin from saved layouts.
 
-*Public release is planned alongside the Patreon launch — both arriving soon. Full product page: [honeybadger.software/j1-bridge](https://honeybadger.software/j1-bridge.html). ⭐ this profile to get notified.*
+<img src="assets/rust-gate-sign.jpg" width="33.3%" alt="Rust: the gate with its painted sign, Honey Badger HUD across the top"><img src="assets/rust-gate-plaza.jpg" width="33.3%" alt="Rust: gate plaza with lit doorways and barricades"><img src="assets/rust-vault.jpg" width="33.3%" alt="Rust: vault interior with the painted vault door and team score bar">
 
----
+<sub>Build: places whole structures from saved layouts. &nbsp; Map Forge: edits terrain layers and saves a new .map. &nbsp; DPS HUD: damage, headshots, last hit, target, accuracy. &nbsp; TDM: two-team deathmatch.</sub>
 
-## 🚗 Also building
+#### Battle Aura &nbsp;<sub>WoW Forever</sub>
 
-### C7 Corvette CAN bus dashboard
-A real touchscreen dashboard for 2014-2019 C7 Corvettes — Pi 4 + PiCAN2 reading the **raw CAN bus** (not OBD-II PIDs, the real stream the car talks to itself with). 10-15" landscape display on a swing-arm mount off the passenger grab bar. PySide6 + QML for the UI. Aimed at being the first commercial-quality dashboard kit for the C7 community.
+A personal damage meter with a battle scene behind the numbers. Total damage, biggest hit and DPS. Hits float up over the scene, and a banner marks a new personal best.
 
-Also live: an in-browser **[Dash Builder](https://honeybadger.software/gauge-builder.html)** so anyone can design a custom digital gauge cluster + a **Nitrous Control** module with seven-gate safety interlocks.
+<a href="https://www.curseforge.com/wow/addons/battle-aura"><img src="assets/battle-aura-logo.jpg" width="36%" alt="Battle Aura logo"></a><a href="https://www.curseforge.com/wow/addons/battle-aura"><img src="assets/battle-aura-in-game.jpg" width="64%" alt="Battle Aura in a real fight in WoW Forever"></a>
 
-*Hardware prototype in progress. Will be open-source firmware + optional turnkey kit. Product pages at [honeybadger.software/c7-dashboard](https://honeybadger.software/c7-dashboard.html) and [honeybadger.software/nitrous](https://honeybadger.software/nitrous.html).*
+<sub>[CurseForge](https://www.curseforge.com/wow/addons/battle-aura) &nbsp; [WoWInterface](https://www.wowinterface.com/downloads/info27234-BattleAura.html) &nbsp; [Source](https://github.com/honeybadger-software/battle-aura)</sub>
 
-### Maguire blender plant monitoring (industrial)
-In-house manufacturing tooling scaling from 1 to 150 blenders. Polished operator dashboards, OPC UA / MQTT / Modbus everywhere, per-shift costing and reports. Not a consumer product, but the foundation pattern (NiceGUI + InfluxDB + Grafana + auto-installer) feeds back into everything else.
+#### EVE Fleet Foreman &nbsp;<sub>EVE Online</sub>
 
----
+Free mining helper. Ranks ores by ISK per m³ from Jita prices, tells you whether to refine or sell, and works out the fleet split from the Mining Ledger.
 
-## 💡 What we build like
+<a href="https://github.com/honeybadger-software/eve-fleet-foreman"><img src="assets/foreman-what-to-mine.jpg" width="50%" alt="Fleet Foreman: What to Mine table"></a><a href="https://github.com/honeybadger-software/eve-fleet-foreman"><img src="assets/foreman-refine.jpg" width="50%" alt="Fleet Foreman: Refine tab, sell raw or reprocess verdict for 100,000 Mercoxit"></a>
 
-- **One-click installers, no terminals.** A user shouldn't need to know what Python is to use your software.
-- **Honest about limits.** Every product ships with a Known Issues page on day one. No marketing claim the code can't back up.
-- **No telemetry, no analytics, no "phone home."** Your machines are your business.
-- **Free + open-source where it makes sense.** Patreon for those who want to feed the badger; nothing locked behind a paywall.
-- **Polished or it doesn't ship.** No DOS-window installers, no `pip install` instructions for end users. If your grandmother can't use it, it isn't done.
+### ACTIVE DEPLOYMENTS
 
----
+**War Room** &nbsp; PvP intel for EVE Frontier<br>
+<sub>React 19, TypeScript, Vite. Reads Sui testnet through GraphQL and a gRPC-web stream, and falls back to polling when the stream drops. Source is private.</sub><br>
+[honeybadger.software/frontier/warroom](https://honeybadger.software/frontier/warroom/)
 
-## 🦡 Why HONEYBADGER
+**Bounty Board** &nbsp; on-chain bounties for EVE Frontier<br>
+<sub>Move contract `hb_bounty::bounty_board` on Sui testnet (Stillness), React front end. Package `0xeb16...c7147`.</sub><br>
+[honeybadger.software/frontier/bounty](https://honeybadger.software/frontier/bounty/) &nbsp; [source](https://github.com/honeybadger-software/eve-frontier-bounty-board)
 
-The honey badger doesn't care. It chews through firmware bugs vendors won't fix, walks past "this can't be done" forum threads, and ships the polished thing anyway.
+**Honey Badger** &nbsp; modded Rust server<br>
+<sub>C# plugins on Carbon, using the Oxide and Carbon plugin APIs. Listed in the Rust server browser under Modded. Source is private.</sub>
 
-Small studio. One developer. Real products.
+**Battle Aura** &nbsp; WoW Forever addon<br>
+<sub>Lua on Blizzard's own damage meter API (C_DamageMeter), so it works with Forever's restricted combat data.</sub><br>
+[curseforge.com/wow/addons/battle-aura](https://www.curseforge.com/wow/addons/battle-aura) &nbsp; [source](https://github.com/honeybadger-software/battle-aura)
 
----
+**EVE Fleet Foreman** &nbsp; EVE Online mining tool<br>
+<sub>Python and NiceGUI. CCP's ESI with EVE SSO (PKCE) for the ledger, Fuzzwork for prices. Windows .exe on the releases page.</sub><br>
+[source and download](https://github.com/honeybadger-software/eve-fleet-foreman)
 
-<div align="center">
+### SOFTWARE AND INDUSTRIAL
 
-**Built honest. Shipped polished. Maintained free.**
+I also build tools for machines: J1 Bridge for the Snapmaker J1 and OrcaSlicer, a CAN-bus dash for the C7 Corvette, and plant-floor dashboards that read blenders and PLCs. More at [honeybadger.software/industrial](https://honeybadger.software/industrial).
 
-<sub>Browse everything at [honeybadger.software](https://honeybadger.software/) · Patreon launching with J1 Bridge v0.1.0 · Until then, a ⭐ goes a long way.</sub>
+### CONTACT
 
-</div>
+[honeybadger.software](https://honeybadger.software) &nbsp; [@HoneyBadgerMods](https://x.com/HoneyBadgerMods) on X &nbsp; HONEYBADGERSOFTWARE in EVE Frontier
+
+<sub>EVE Frontier material is used with limited permission of CCP Games. Not affiliated with or endorsed by CCP Games, Facepunch or Blizzard.</sub>
