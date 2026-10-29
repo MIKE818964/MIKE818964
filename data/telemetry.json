@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-10-28T12:54:04Z",
+  "generatedAt": "2026-10-29T13:00:27Z",
   "window": {
     "hours": 24,
-    "from": "2026-10-27T12:54:04Z",
-    "to": "2026-10-28T12:54:04Z",
+    "from": "2026-10-28T13:00:27Z",
+    "to": "2026-10-29T13:00:27Z",
     "clock": "chain time (checkpoint timestamp)"
   },
-  "killmails_24h": 61,
-  "gate_jumps_24h": 697,
-  "structure_events_24h": 302,
+  "killmails_24h": 32,
+  "gate_jumps_24h": 974,
+  "structure_events_24h": 288,
   "structure_events_meaning": "new structures anchored (assembly, storage unit, gate, turret, network node), distinct",
   "dapp_index_listings_total": 7,
   "dapp_index_ours": [
     "honey-badger-war-room",
     "honey-badger-bounty-board"
   ],
-  "graphql_requests": 26,
-  "run_seconds": 9,
+  "graphql_requests": 31,
+  "run_seconds": 11,
   "not_read": {},
   "source": "Sui testnet GraphQL https://graphql.testnet.sui.io/graphql: events of world package 0x7be18d6294e533bedd9a5d70a96ce8d9d4b87a7c74188ba65d3fe966bbed9d92 (tenant stillness) and dynamic fields of Dapp Index registry 0x81bdd87afb38e560c04aca9afa64775bd8b2af1a644a7424c64511ed9ba8916b. Public reads, no keys."
 }
