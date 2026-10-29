@@ -4,7 +4,7 @@
   <img alt="Honey Badger. Game mods, servers and tools." src="assets/hero-dark.svg" width="100%">
 </picture>
 
-I'm Honey Badger. I've been writing code since 1996. These days I build mods, servers and tools for the games I play, on my own.
+I'm Honey Badger, and I've been writing code since 1996 — two decades of game development and modding behind me. These days I build mods, servers and tools for the games I play, on my own.
 
 <a href="https://honeybadger.software/frontier/warroom/"><img src="assets/warroom-map.jpg" width="100%" alt="The War Room for EVE Frontier: kill map in the middle, live feed on the left, top hunter's dossier on the right. Click to open it."></a>
 
@@ -30,6 +30,10 @@ I'm Honey Badger. I've been writing code since 1996. These days I build mods, se
 **29 Sep 2026.** Republished the Bounty Board contract for Cycle 7.
 
 </details>
+
+### Background
+
+Game development and modding since the early 2000s, starting at Valve — Half-Life 2, Counter-Strike 1.6 and Source, and Black Mesa — and mod work since across Counter-Strike: Global Offensive, Dota, Garry's Mod, and Unity. The mods and tools below are where that leads today.
 
 ### The mods
 
