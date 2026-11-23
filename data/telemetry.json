@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-11-22T14:34:24Z",
+  "generatedAt": "2026-11-23T18:07:46Z",
   "window": {
     "hours": 24,
-    "from": "2026-11-21T14:34:24Z",
-    "to": "2026-11-22T14:34:24Z",
+    "from": "2026-11-22T18:07:46Z",
+    "to": "2026-11-23T18:07:46Z",
     "clock": "chain time (checkpoint timestamp)"
   },
-  "killmails_24h": 149,
-  "gate_jumps_24h": 1570,
+  "killmails_24h": 21,
+  "gate_jumps_24h": 1409,
   "structure_events_24h": null,
   "structure_events_meaning": "new structures anchored (assembly, storage unit, gate, turret, network node), distinct",
   "dapp_index_listings_total": 7,
@@ -15,8 +15,8 @@
     "honey-badger-war-room",
     "honey-badger-bounty-board"
   ],
-  "graphql_requests": 42,
-  "run_seconds": 14,
+  "graphql_requests": 37,
+  "run_seconds": 13,
   "not_read": {
     "structure_events_24h": "assembly::AssemblyCreatedEvent: more than 300 events in 24 h, count would be incomplete"
   },
