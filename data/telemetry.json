@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-11-26T16:53:32Z",
+  "generatedAt": "2026-11-27T16:39:44Z",
   "window": {
     "hours": 24,
-    "from": "2026-11-25T16:53:32Z",
-    "to": "2026-11-26T16:53:32Z",
+    "from": "2026-11-26T16:39:44Z",
+    "to": "2026-11-27T16:39:44Z",
     "clock": "chain time (checkpoint timestamp)"
   },
-  "killmails_24h": 33,
-  "gate_jumps_24h": 1115,
-  "structure_events_24h": 414,
+  "killmails_24h": 67,
+  "gate_jumps_24h": 1063,
+  "structure_events_24h": 373,
   "structure_events_meaning": "new structures anchored (assembly, storage unit, gate, turret, network node), distinct",
   "dapp_index_listings_total": 7,
   "dapp_index_ours": [
